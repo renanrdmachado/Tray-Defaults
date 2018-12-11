@@ -1,0 +1,164 @@
+{% spaceless %}
+<!doctype html>
+<html data-theme="{{ settings.extension_id }}" data-store="{{ store.id }}" class="page-{{ pages.current }}">
+<head>
+
+    <!-- tray charset -->
+    {{ html.charset() }}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- tray meta tags -->
+    {{ tray.meta }}
+
+    <!-- tray styles -->
+    {{ tray.styles }}
+
+    <!-- theme styles -->
+    <link rel="stylesheet" href="{{ asset('css/bootstrap/bootstrap.min.css') }}" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600,700" rel="stylesheet"> 
+    <link rel="stylesheet" href="{{ asset('css/theme.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/iziModal.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/custom.css', {dynamic: true}) }}" type="text/css">
+
+    <style>
+        {{ settings.custom_css }}
+    </style>
+
+    <!-- Facebook Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '2175185985838864');
+      fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=2175185985838864&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Facebook Pixel Code -->
+
+    <!-- tray analytics -->
+    {{ tray.analytics }}
+
+    <!-- google tag manager -->
+    {{ googleTagManager.header(pages.current, tagManagerData) }}
+</head>
+<body>
+    {{ googleTagManager.top(pages.current, tagManagerData) }}
+
+    {% element 'snippets/messages' %}
+
+    {% element 'snippets/menu-mobile' %}
+
+    <div class="application">
+
+        {% element 'header' %}
+
+        <div class="banner-top">
+            {% if pages.current == 'home' %}
+                {% if utils.is_mobile and settings.enable_banner_home %}
+                    {% element 'snippets/banner-home' %}
+                {% else %}
+                    {% if not utils.is_mobile %}
+                        {% element 'snippets/banner-home' %}
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+        </div>  
+
+        <main class="site-main container">
+            <div class="row">
+
+                <section class="page-content col-sm-12">
+                    {{ content_for_layout }}
+                </section>
+
+                {% if pages.current in ['search'] %}
+                    {% if settings.history_position == 1 %}
+                        <section class="products-visited col-sm-12">
+                            <h4>{{ Translation('confira_tambem') }}</h4>
+                            <h3 class="related-title">{{ Translation('produtos_visitados') }}</h3>
+                            {% element 'snippets/history' {
+                                'store.id': store.id,
+                                'pages.current': pages.current,
+                                'category.id': category.id
+                            } %}
+                        </section>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </main>
+
+        {% element 'footer' %}
+
+        {% if settings.hottags_position == 2 %}
+            <div class="tagcloud">
+                <h4>As palavras</h4>
+                <h3>{{ Translation('tags_mais_buscadas') }}</h3>
+                {% for tag in tags %}
+                  <a href="{{ tag.url }}" style="font-size: {{ tag.font_size }}%">{{ tag.word }}</a>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+    </div>
+
+    {% element 'snippets/credits' %}
+
+    <!-- tray -->
+    {% element 'snippets/modal' %}
+    {{ googleTagManager.bottom(pages.current, tagManagerData) }}
+    {{ tray.scripts }}
+    {{
+            html.script({
+                '0' : tray.paths.js ~ 'dist/application.min.js?' ~ utils.assets_version,
+                '1' : tray.paths.js ~ 'init.js?' ~ utils.assets_version
+            })
+    }}
+    {% element 'snippets/pageview' %}
+    {{ store.chat }}
+
+    
+
+    <!-- theme scripts-->
+    <script type="text/javascript" src="{{ asset('js/slick.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/iziModal.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/theme.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/custom.js') }}"></script>
+
+    {% if settings.background_image %}
+    <style>
+        .application{ background-image: url('{{ themePath }}{{ settings.background_image }}'); }
+    </style>
+    {% endif %}
+
+    {% if pages.current == 'home' %}
+        {%element 'snippets/popup-newsletter'%}
+        <script type="text/javascript">
+            $("#popup-newsletter").iziModal({
+              width:684
+            });
+
+            jQuery(window).on('load',function(){
+              setTimeout(function(){
+                console.log('Abre POPUP');
+                jQuery("#popup-newsletter").iziModal('open');
+              },4000);
+            });
+
+            jQuery("#popup-newsletter .close").on('click',function(e){
+                e.preventDefault();
+                jQuery("#popup-newsletter").iziModal('close');
+            });
+        </script>
+    {% endif %}
+
+</body>
+</html>
+{% endspaceless %}

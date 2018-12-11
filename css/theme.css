@@ -1,0 +1,42 @@
+/* ZOOM dos produtos */
+.cloud-zoom-big {width:100%!important;height:100%!important;margin-left: 0!important;left:0!important;top:0!important;box-shadow: none!important;background-color:#fff;}
+.mousetrap {height: 100%!important; z-index: 1000!important; }
+
+/* Dev By */
+.dev-by {background-color:#eeeeee;padding:5px 0;text-align:center;display: block;width: 100%}
+
+/* FullWidth */
+.fullwidth { width: 100vw; position: relative; margin-left: -50vw; left: 50%;}
+
+/* Divider */
+hr.divider {width: 70px; height: 2px; border: 0; background-color: #f9aa94; }
+
+/* Section Title */
+	/* Line Fullwidth */
+	.section-title {position: relative;margin-bottom: 15px;text-align: center;}
+	.section-title:before {content:'';width: 100vw;left:50%;top: 50%;position: absolute;transform: translateY(-50%);margin-left: -50vw;border-bottom:1px solid #f9aa94;}
+	.section-title h2 {font-size: 30px;color:#f9aa94;text-transform: uppercase;letter-spacing: 10px;margin-bottom:0;background-color:#fff;padding:15px 25px;position: relative;display: inline-block;font-weight: 300;}
+
+
+/* No Gutters */
+.row.no-gutters > * {padding: 0 !important; }
+
+/* Foo Social */
+.foo-social {text-align: center;background-color:#f8f8f8;padding:8px 0;}
+.foo-social .social-list li {display: inline-block; margin-right: 10px; }
+.foo-social .social-list li:last-child {margin-right:0;}
+
+/* Newsletter */
+.newsletter {font-size: 16px;color:#4f4f4f;}
+.newsletter form {margin-top: 35px;margin-bottom: 80px;}
+.newsletter form button{display:inline-block;width: auto;min-width: 290px;}
+
+/* Menu Mobile */
+.menu-mobile {background-color: #fff!important;border-color:#000;}
+.menu-mobile a{color: #000!important;}
+.menu-mobile .close-menu{background-color: #ffa67d;}
+
+/* Showcase Arrows */
+.showcase .slick-arrow {top:50%;transform:translateY(-50%);background-color:#fff;}
+.showcase .slick-next {right:-40px!important;}
+.showcase .slick-prev {left:-40px!important;}

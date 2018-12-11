@@ -1,0 +1,64 @@
+<div id="top-nav">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 menu">
+                <ul>
+                    <li>
+                        <a href="{{links.account}}">
+                            Minha Conta
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{links.orders}}">
+                            Meus Pedidos
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/listas">
+                            Lista de desejos
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-md-4 customer-info">
+                <span class="tray-hide" data-logged-user="true">
+                    {{ Translation('bem_vindo_central') }} <span data-customer="name"></span>,
+                    <a href="{{ links.logout }}">{{ Translation('sair') }}</a></li>
+                </span>
+                <span class="tray-hide" data-logged-user="false">
+                    {{ Translation('bem_vindo_central') }}, <a href="{{ links.login }}" data-tray-tst="login" class="{{ utils.is_https ? 'modal-login' }}">{{ Translation('login') }}</a> {{ Translation('ou') }} <a href="{{ links.register }}" data-tray-tst="cadastro">{{ Translation('cadastre_se') }}</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3 col-xs-5 brand">
+                <h1 class="site-logo" alt="{{ store.name }}">
+                    <a href="{{ links.home }}" data-tray-tst="logotipo_loja">{{ Image('logo') }}</a>
+                </h1>
+            </div>
+            <div class="col-sm-7 top-search hidden-xs">
+                {% element 'snippets/search' %}
+            </div>
+            <div class="col-sm-1 col-xs-3 top-user ">
+                {% element 'snippets/user' %}
+            </div>
+            <div class="col-sm-1 col-xs-4 top-cart">
+                {% element 'snippets/cart' %}
+            </div>
+        </div>
+    </div>
+
+    <nav class="main-top-menu">
+        <div class="container">
+            <div class="row">
+                <a href="#" class="visible-xs-block btn btn-menu">MENU</a>
+                {% element 'snippets/menu' %}
+            </div>
+        </div>
+    </nav>
+</header>

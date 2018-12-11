@@ -1,0 +1,11 @@
+<div class="search">
+    <form role="form" action="{{ links.search }}" method="get" data-search="suggestion">
+        <input type="hidden" name="loja" value="{{ store.id }}">
+        <button class="search-button pull-right" type="submit" tabindex="2" data-tray-tst="botao_buscar">
+            <svg version="1.1" id="Camada_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"width="20px" height="20px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve"> <circle fill="none" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" cx="8.466" cy="8.381" r="7.406"/> <line fill="none" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="13.67" y1="13.65" x2="18.965" y2="18.945"/> </svg>
+        </button>
+        <div>
+            <input class="search-key" type="text" data-input="suggestion" placeholder="{{ Translation('buscar') }}" name="palavra_busca" tabindex="1" data-tray-tst="busca_palavra" required>
+        </div>
+    </form>
+</div>

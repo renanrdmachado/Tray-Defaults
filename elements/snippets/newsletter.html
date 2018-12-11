@@ -1,0 +1,30 @@
+<section class="newsletter" data-tray-tst="newsletter_box">
+    <div class="section-title">
+    	<div class="container">
+    		<div class="text-center">
+        		<h2>NOVIDADES</h2>
+    		</div>
+    	</div>
+
+    </div>
+
+    <div class="container">
+	    <p class="text-center">
+	    	Seja o primeiro a saber das nossas promoções, dicas e novidades!
+	    </p>
+	    <form action="{{ links.newsletter }}" method="post" name="newsletter" data-tray-tst="newsletter_form">
+	    	<div class="row">
+	    		<div class="col-md-4 col-md-offset-2">
+	        		<input name="name" type="text" placeholder="{{ Translation('digitar_nome') }}" required>
+	    		</div>
+	    		<div class="col-md-4">
+	        		<input name="email" type="email" placeholder="{{ Translation('digitar_email') }}" data-tray-tst="newsletter_email" required>
+	    		</div>
+	    	</div>
+
+	    	<div class="row text-center">
+	        	<button data-tray-tst="newsletter_cadastrar" class="btn btn-buy">RECEBER</button>
+	    	</div>
+	    </form>
+	</div>
+</section>

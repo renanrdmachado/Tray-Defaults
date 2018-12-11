@@ -1,0 +1,18 @@
+{% if products|length > 0 %}
+    <div class="showcase clearfix" data-tray-tst="vitrine_home">
+        <div class="section-title">
+            <h2>
+                {{ showcaseTitle }}
+            </h2>
+        </div>
+        
+        <ul class="slider-prods">
+        {% for product in products %}
+            {% set ranking = product.ranking %}
+            <li class="" data-tray-tst="vitrine_produto">
+                {% element 'snippets/product' {"product": product} %}
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+{% endif %}

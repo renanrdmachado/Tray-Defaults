@@ -1,0 +1,15 @@
+{% if settings.structure == 1 %}
+<aside class="sidebar col-sm-3">
+{% elseif settings.structure == 2%}
+<aside class="sidebar col-sm-3 pull-right">
+{% endif %}
+    
+    {% element 'smartfilter' %}
+   
+    {% if banner.side %}
+    <div class="banner banner-sidebar hidden-xs">
+        {{ banner.side }}
+    </div>
+    {% endif %}
+    
+</aside>

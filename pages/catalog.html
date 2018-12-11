@@ -1,0 +1,95 @@
+<section class="catalog-header">
+
+    <div class="row category-top">
+        <div class="col-md-8">
+            {% if breadcrumb %}
+                {% element 'snippets/breadcrumb' %}
+            {% endif %}
+        </div>
+        <div class="col-md-4">
+            <div class="system-filter">
+                {% if settings.compare %}
+                    <a href="/loja/comparador.php?loja={{store.id}}&IdDep={{category.id}}" class="button-compare">{{ Translation("comparar_produto") }}</a>
+                {% endif %}
+                
+                {% element 'snippets/filter' {
+                    'brands': category.brands
+                } %}
+            </div>
+        </div>
+    </div>
+
+    <hr class="fullwidth">
+
+    {% if products|length > 0 %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="pagination">
+                {% element 'snippets/paginate' %}
+            </div>
+        </div>
+    </div>
+    
+    {% endif %}
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="catalog-name">{{ category.name }}</h1>
+            
+            {% if banner.title %}
+                <div class="banner banner-title {% if not settings.enable_banner_default %}mobile-off{% endif %}">
+                    {{ banner.title }}
+                </div>
+            {% endif %}
+            
+            {% if category.small_description %}
+            <div class="category-description">
+                {{ category.small_description }}
+            </div>
+            {% endif %}    
+        </div>
+    </div>
+
+    <div class="row">
+        {% if "central" in pages.current %}
+            {%  element 'sidebar-central' %}
+        {% else %}
+            {%  element 'sidebar-left' %}
+        {% endif %}
+
+
+        <div class="col-md-9">
+            
+            {% if products|length > 0 %}
+
+                <div class="catalog-content row">
+                    {% element 'showcase-catalog' {
+                        "products": products
+                    } %}
+                </div>
+
+            {% else %}
+                
+                <div class="catalog-empty">
+                    <img src="{{ asset('img/catalog-empty.svg') }}" alt="Sem produtos" width="150" height="150">
+                    <p>{{ Translation('nenhum_resultado') }}</p>
+                </div>
+
+            {% endif %}
+
+            {% if banner.bottom %}
+                <div class="banner banner-bottom {% if not settings.enable_banner_default %}mobile-off{% endif %}">
+                    {{ banner.bottom }}
+                </div>
+            {% endif %}
+
+        </div>
+    </div>
+    <hr class="fullwidth">
+    <div class="row">
+        {% if products|length > 0 %}
+            <div class="pagination">
+                {% element 'snippets/paginate' %}
+            </div>
+        {% endif %} 
+    </div>
+</section>
