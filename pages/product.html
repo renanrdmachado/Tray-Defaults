@@ -138,6 +138,10 @@
     <div data-app="product.payment-methods" id="formasPagto" class="prodBox"  ></div>
 </section>
 
+<section class="related-products">
+    {% element 'showcase-related' %}
+</section>
+
 {% if productHelper.bundle() %}
 <section class="product-cross-sell">
     <h4>{{ Translation('confira_tambem') }}</h4>
