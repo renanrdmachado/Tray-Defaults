@@ -1,0 +1,14 @@
+{% if product.related_products %}
+    <div class="showcase clearfix" data-tray-tst="vitrine_home">
+        <h2>
+            Quem comprou, comprou também
+        </h2>
+        <ul class="row slider_products">
+        {% for related in product.related_products %}
+            <li class="" data-tray-tst="vitrine_produto">
+                {% element 'snippets/product' {"product": related} %}
+            </li>            
+        {% endfor %}
+        </ul>
+    </div>
+{% endif %}
