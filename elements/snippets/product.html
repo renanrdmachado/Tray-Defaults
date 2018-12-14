@@ -1,15 +1,19 @@
 <div itemscope itemtype="http://schema.org/Product" class="product{{ product.has_other_prices ? ' has-other-prices' }}">
     <a href="{{ settings.buy_to_cart ? links.cart_add ~ product.id : product.link }}" data-tray-tst="vitrine_produto_link_imagem">
 
-        <div class="wishlist-icon">
-            {% if not product.upon_request and product.available %}
-                {{ productHelper.wishlist() }}
-            {% endif %}
+        <div class="selos">
+                {% if product['current_price'] < product['price'] %}
+                <div class="item">
+                    <span class="selo-price-off" data-percent="{{100 - ( product.price_offer / product.price ) * 100}}"></span>
+                </div>
+                {% endif %}
 
-            <style type="text/css">
-                .wishlist-icon #bloco-add-lista a{background-image:url({{asset('img/like-sm-empty.svg')}})!important;}
-            </style>
-        </div>
+                {% if product.additional_button %}
+                    <div class="item">
+                        <img src="{{ asset('img/selo-edicaoespecial.png') }}" class="selo-edicaoespecial">
+                    </div>
+                {% endif %}
+            </div>
         
         <div class="product-image">
             {% if product.images %}
