@@ -13,6 +13,14 @@
                         <img src="{{ asset('img/selo-edicaoespecial.png') }}" class="selo-edicaoespecial">
                     </div>
                 {% endif %}
+         
+                {% if product.new %}
+                    <div class="item">
+                        <span class="selo-lancamento">
+                            Lançamento
+                        </span>
+                    </div>
+                {% endif %}
             </div>
         
         <div class="product-image">
