@@ -75,5 +75,27 @@ $(document).ready(function(){
 
 	  $("#searchResults").text("Here List of products will be shown which are cost between " + min_price  +" "+ "and" + " "+ max_price + ".");
 	});
+	
+	// Form Filters Line
+	$('#form-filters-line').on('submit',function(e){
+		e.preventDefault();
+		var data = $(this).serialize();
+		var dataArr = data.split('&');
+		var price_from=0;
+		var price_to=1000;
+		dataArr.map(function(value,key){
+			if(value.startsWith('prices_from')){
+				from = value.split('=');
+				price_from = from[1];
+			}
+			if(value.startsWith('prices_to')){
+				to = value.split('=');
+				price_to = to[1];
+			}
+		});
+		dataArr.push('prices[]='+price_from+','+price_to);
+		var uri = $(this).attr('action')+'?'+dataArr.join('&');
+		window.location=uri;
+	});
 
 });
