@@ -1,0 +1,117 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" type="text/css" media="all" />
+<link rel="stylesheet" href="{{ asset('css/price-range.css') }}" type="text/css">
+
+<div class="filters-line ">
+	<form action="{{ links.search }}" id="form-filters-line">
+		<input type="hidden" name="loja" value="727129">
+	    <div class="container">
+	        <div class="row d-flex align-center">
+	            <div class="col-md-6">
+	               <div class="filters-ctt">
+
+	                    <div class="filters-txt">
+	                        Encontre o brinquedo ideal para você!
+	                    </div>
+	                    <ul class="filters-options">
+	                        <li>
+	                            <a href="#">
+	                                Gênero
+	                                <div class="filters-options-icon">                                    
+	                                    <img src="{{ asset('img/icon-genero.png') }}">
+	                                </div>
+	                            </a>
+
+	                            <div class="filter-options-box">
+	                            	
+	                                <ul>
+	                                    <li>
+	                                        <label>
+	                                            <input type="radio" name="variants[]" value="Gênero||Feminino"/> Meninas
+	                                        </label>
+	                                    </li>
+	                                    <li>
+	                                        <label>
+	                                            <input type="radio" name="variants[]" value="Gênero||Unissex"/> Unissex
+	                                        </label>
+	                                    </li>
+	                                </ul>
+	                            </div>
+	                        </li>
+	                        <li>
+	                            <a href="#">
+	                                Idade
+	                                <div class="filters-options-icon">                                    
+	                                    0-2
+	                                </div>
+	                            </a>
+
+	                            <div class="filter-options-box">
+	                            	{% set categIdade = Categories({'id': 5}) %}
+	                                <ul>
+	                                	{% for idade in categIdade.children %}
+	                                    <li>
+	                                        <label>
+	                                            <input type="radio" name="categories[]" value="{{idade.name}}"/> {{idade.name}}
+	                                        </label>
+	                                    </li>
+	                                    {% endfor %}
+	                                    
+	                                </ul>
+	                            </div>
+	                        </li>
+	                        <li>
+	                            <a href="#">
+	                                Tipo
+	                                <div class="filters-options-icon">                                    
+	                                    <img src="{{ asset('img/icon-tipo.png') }}">
+	                                </div>
+	                            </a>
+
+	                            <div class="filter-options-box">
+	                                <ul>
+	                                    {% set categTipo = Categories({'id': 15}) %}
+	                                <ul>
+	                                	{% for tipo in categTipo.children %}
+	                                    <li>
+	                                        <label>
+	                                            <input type="radio" name="categories[]" value="{{tipo.name}}"/> {{tipo.name}}
+	                                        </label>
+	                                    </li>
+	                                    {% endfor %}
+	                                    
+	                                </ul>
+	                                </ul>
+	                            </div>
+	                        </li>
+	                    </ul>
+	               </div>
+	            </div>
+	            <div class="col-md-6">
+	               <div class="filters-ctt filters-range">
+	                    Valor
+
+	                    <div class="price-range-block">
+
+	                      
+	                    	<div id="slider-range" class="price-filter-range" name="rangeInput"></div>
+
+	                        <div class="range-numbers">
+	                          <input type="number" min=0 max="900" oninput="validity.valid||(value='0');" id="min_price" class="price-range-field" name="prices_from"/> 
+	                          -   
+	                          <input type="number" min=0 max="1000" oninput="validity.valid||(value='1000');" id="max_price" class="price-range-field" name="prices_to"/>
+	                        </div>
+	                        
+	                    </div>
+
+	                    <!-- <div class="filter-bar"></div> -->
+	                    <button type="submit">Filtrar</button>
+	               </div>
+	            </div>
+	        </div>
+	    </div>
+	</form>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="{{ asset('js/price-range.js') }}"></script>
