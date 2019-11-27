@@ -90,18 +90,17 @@
 	               <div class="filters-ctt filters-range">
 	                    Valor
 
-	                    <div class="price-range-block">
+	                    <div class="price-range-block">                  
+				    <div id="slider-range" class="price-filter-range" name="rangeInput"></div>
+				    <div class="range-numbers">
+				      <input type="text" min=0 max="900" oninput="validity.valid||(value='0');" id="min_price" class="price-range-field" name="prices_from"/>                       
+				      <input type="text" min=0 max="1000" oninput="validity.valid||(value='1000');" id="max_price" class="price-range-field" name="prices_to"/>
 
-	                      
-	                    	<div id="slider-range" class="price-filter-range" name="rangeInput"></div>
-
-	                        <div class="range-numbers">
-	                          <input type="number" min=0 max="900" oninput="validity.valid||(value='0');" id="min_price" class="price-range-field" name="prices_from"/> 
-	                          -   
-	                          <input type="number" min=0 max="1000" oninput="validity.valid||(value='1000');" id="max_price" class="price-range-field" name="prices_to"/>
-	                        </div>
-	                        
-	                    </div>
+				      <span id="min_price_span">0</span>
+				      <span class="separator">-</span>  
+				      <span id="max_price_span">1000</span>
+				    </div>            
+			    </div>
 
 	                    <!-- <div class="filter-bar"></div> -->
 	                    <button type="submit">Filtrar</button>
