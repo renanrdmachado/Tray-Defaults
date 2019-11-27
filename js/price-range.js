@@ -12,6 +12,7 @@ $(document).ready(function(){
 
 	  if (min_price_range > max_price_range) {
 		$('#max_price').val(min_price_range);
+		$('#max_price_span').html('R$ '+min_price_range);
 	  }
 
 	  $("#slider-range").slider({
@@ -34,7 +35,9 @@ $(document).ready(function(){
 			max_price_range = min_price_range + 100;
 			
 			$("#min_price").val(min_price_range);		
+			$("#min_price_span").html('R$ '+min_price_range);		
 			$("#max_price").val(max_price_range);
+			$("#max_price_span").val(max_price_range);
 	  }
 
 	  $("#slider-range").slider({
@@ -59,12 +62,16 @@ $(document).ready(function(){
 		  }
 		  
 		  $("#min_price").val(ui.values[0]);
+		  $("#min_price_span").html('R$ '+ui.values[0]);
 		  $("#max_price").val(ui.values[1]);
+		  $("#max_price_span").html('R$ '+ui.values[1]);
 		}
 	  });
 
 	  $("#min_price").val($("#slider-range").slider("values", 0));
+	  $("#min_price_span").html('R$ '+$("#slider-range").slider("values", 0));
 	  $("#max_price").val($("#slider-range").slider("values", 1));
+	  $("#max_price_span").html('R$ '+$("#slider-range").slider("values", 1));
 
 	});
 
